@@ -1,0 +1,10 @@
+cython
+falcon
+gunicorn
+psycopg2
+sqlalchemy
+bcrypt
+itsdangerous
+shortuuid
+cryptography
+cerberus
