@@ -1,13 +1,17 @@
 language: python
 python:
-- 3.3
-- 3.4
+  - 3.3
+  - 3.4
 install:
-- pip install coveralls
+  - pip install coveralls
 script:
-- coverage run --source=hoge_test setup.py test
+  - coverage run --source=hoge_test setup.py test
 after_success:
-- coveralls
+  - coveralls
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database findechoes-db;' -U findechoes
 notifications:
   slack:
     secure: Wdx1p/d/10uKCfGXu938WzKKFsiWUgijdTMat/nC/ArsXmBm9mZ+VGfGJ2MnqJ1H0MKL9J0Yievdr10kGItryQN9lQBJSA9Wyn9dCd3v6albTGdtof43xLQb5Y8YsgB/pEXdfaJL3e3a24yRx5Avu5xn8QTwJHdmW4phgc8LKjPforN+l2OErl5rbDdQbla6sk1cWgR9qh6T7McBLEp8oKb2ozWzZtvKpuHJ9gPQzE/Uy9Rl9aSsbOjuVS74cNae6aQ/zpZR/q+euC/RziPVKzrXEC4Mou3qqOmKeXNP/Hys7krjwqZia6y6pgoDJf07YSyDblmSU5jYJMuI8q5n913iwOMXKt6j+52OM5vBMvioTk28Or6rHHQ7A4U8idTEDX/ctFZx22N1GHfii3jGVeCHdGXXnhy6ILTbwQFLelol7yq5GjfHu/3viz5TKm9vcvHswsKOynSTGMnsz0M5H8KN6HSVvzu7pBY/24Jyb7uKJgaLeGof77m291B+usieRw2TF+DgtuMQZSy7aKenlzHhpOkohL/R1Ch331sGZ+M/uuDqTUE/337RrHi3IAQwMjvITqoaHEX6W3w7/yW0wcESwUckZOo3AmmeaySbEVbtJVBdZHJba4+Pkbj6rGVC4zwHp5xu8gm8o+wp+2jM9eBAsmrv4+pfPz/zRz01dTM=
